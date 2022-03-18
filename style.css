@@ -23,8 +23,8 @@
     /**************** BOX SHADOW ****************/
     --box-shadow1: 2px 2px 4px -2px;
     --box-shadow-1: -2px -2px 4px -2px;
-    --box-shadow1-hover: 3px 3px 8px -2px;
-    --box-shadow-1-hover: -3px -3px 8px -2px;
+    --box-shadow1-hover: 2px 2px 8px -2px;
+    --box-shadow-1-hover: -2px -2px 8px -2px;
     --box-shadow2: 4px 4px 15px -5px;
     --box-shadow-2: -4px -4px 15px -5px;
     --box-shadow3: 8px 8px 20px -5px;
@@ -45,6 +45,7 @@ html {
 }
 body {
     font-family: 'Montserrat', sans-serif;
+    background: url("/images/bg-texture.png");
     background-color: var(--background-color);
     color: var(--text-white);
 }
@@ -115,6 +116,15 @@ input {
     font-size: 2.1rem;
     text-align: center;
 }
+.opacity-1 {
+    opacity: 1 !important;
+}
+.animation {
+    animation: navMenuAnimationRev .15s linear forwards !important;
+}
+.animation-none {
+    animation: none !important;
+}
 
 /************************* NAV *************************/
 
@@ -169,7 +179,8 @@ input {
     background-color: var(--nav-color);
     width: 65vw;
     text-align: center;
-    box-shadow: inset 3px 3px 7px -3px rgba(0,0,0,.1);
+    box-shadow: inset 3px 3px 7px -3px rgba(0,0,0,.1),
+                    0px 0px 0px 1px var(--nav-color);
     padding-top: .8rem; 
     padding-bottom: .8rem; 
     opacity: 0;
@@ -179,7 +190,8 @@ input {
 }
 .nav__item:hover {
     background-color: var(--nav-color-hover);
-    box-shadow: inset var(--box-shadow1-hover) rgba(0,0,0,.1);
+    box-shadow: inset var(--box-shadow1-hover) rgba(0,0,0,.1),
+                0px 0px 0px 1px var(--nav-color);;
 }
 .nav__link {
     display: block;
@@ -193,7 +205,7 @@ input {
     transition: .31s;
 }
 .nav__link:hover {
-    color: #9FFF9F;
+    color: #00ff00;
 }
 .nav__item:nth-of-type(2) {
     animation-delay: .1s;
@@ -216,6 +228,16 @@ input {
         opacity: 1;
     }
 }
+@keyframes navMenuAnimationRev {
+    0% {
+        transform: rotateZ(0) rotateX(0) scale(1);
+        opacity: 1;
+        
+    }
+    100% {
+        transform: rotateZ(-90deg) rotateX(90deg) scale(.1);
+    }
+}
 @keyframes navMenuBoxShadow {
     100% {
         box-shadow: var(--box-shadow2) var(--nav-color2);
@@ -229,9 +251,11 @@ input {
     height: 100vh;
 }
 .home__container {
+    display: flex;
+    flex-direction: column;
     row-gap: 2rem;
     height: 100%;
-    grid-template-rows: .6fr .4fr;
+    justify-content: space-between;
 }
 .home__content,
 .home__img-container {
@@ -241,6 +265,7 @@ input {
 }
 .home__content {
     text-align: center;
+    margin-top: 20vh;
 }
 .home__heading {
     margin-bottom: 2rem;
@@ -276,7 +301,7 @@ input {
 }
 .categories__btn {
     margin-top: 2rem;
-    background: var(--text-white);
+    background: rgb(245,235,235);
     color: var(--section-background-color);
     box-shadow : 2px 2px 6px -2px #999;
 }
@@ -520,7 +545,8 @@ input {
     flex-direction: column;
     row-gap: 1rem;
 }
-.footer__item {
+.footer__item,
+.footer__description {
     font-size: 1.18rem;
     color: var(--text-white);
 }
@@ -533,8 +559,106 @@ input {
     font-size: 2rem;
     color: var(--text-white);
 }
+.footer__item:hover,
+.footer__socials-icon:hover {
+    color: #7fff7f;
+}
 .footer__copyright-container {
     text-align: center;
     padding: 2rem 0;
     border-top: 1px solid rgb(69, 58, 125);
+}
+
+/******************** MEDIA QUERIES ********************/
+
+@media screen and (min-width: 360px) {
+    .footer__container {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 4rem;
+    }
+}
+@media screen and (min-width: 340px) {
+    .categories__cards {
+        gap: 5vw;
+    }
+}
+@media screen and (min-width: 485px) {
+    .categories__cards {
+        grid-template-columns: repeat(3,1fr);
+        gap: 1rem;
+    }
+}
+@media screen and (min-width: 540px) {
+    .pop__courses-container {
+        grid-template-columns: repeat(2,1fr);
+        gap: 1rem;
+    }
+}
+@media screen and (min-width: 590px) {
+    .categories__cards {
+        gap:3rem;
+    }
+}
+/*********************** 768 ***********************/
+
+@media screen and (min-width: 768px) {
+    .container {
+        padding-right: 3rem;
+        padding-left: 3rem;
+    }
+    .nav__toggle-bars {
+        display: none;
+    }
+    .nav__menu {
+        display: block;
+        animation: initial;
+        position: initial;
+        transition: initial;
+    }
+    .nav__list {
+        display: flex;
+        column-gap: 6rem;
+    }
+    .nav__item {
+        background: initial;
+        width: initial;
+        text-align: initial;
+        box-shadow: initial;
+        padding: initial;
+        opacity: initial;
+        animation: initial;
+        transition: initial;
+    }
+    .nav__item:hover {
+        background-color: initial;
+        box-shadow: initial;
+    }
+    .nav__link {
+        height: initial;
+        padding: initial;
+    }
+    .nav__link:hover {
+        color: #7fff7f;
+    }
+    /****************** HOME ******************/
+    .home {
+        height: 80vh;
+        padding-top: 10vh;
+    }
+    .home__container {
+        flex-direction: row;
+        align-items: center;
+    }
+    .home__content {
+        margin-top: 0;
+        text-align: left;
+    }
+    .home__content,
+    .home__img-container {
+        flex-basis: 50%;
+        display: initial;
+    }
+    .home__img {
+        width: 500px;
+    }
 }
