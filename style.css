@@ -294,6 +294,9 @@ input {
 .categories__container {
     row-gap: 4rem;
 }
+.categories__data {
+    max-width: 43rem;
+}
 .categories__title {
     font-size: 2.6rem;
     text-transform: capitalize;
@@ -310,16 +313,25 @@ input {
     color: var(--text-white);
     background-color: var(--dark-orange);
 }
-.categories__cards {
+.categories__cards-subcontainer {
+    width: fit-content;
+    margin: 0 auto;
+    display: grid;
     grid-template-columns: repeat(2,1fr);
     gap: 1rem;
+    justify-items: center;
 }
 .categories__card {
+    max-width: 22rem;
     background-color: var(--box-color);
     padding: 1.75rem 1.25rem;
     border-radius: 1rem;
-    box-shadow: 1px 1px 11px rgba(0,0,0,.1);
+    box-shadow: 2px 2px 20px 3px rgba(0,0,0,.2);
     transition: .2s;
+}
+.categories__card:hover {
+    transform: scale(1.02);
+    box-shadow: 2px 2px 20px 6px rgba(0,0,0,.4);
 }
 .categories__icon-container {
     display: inline-block;
@@ -355,10 +367,6 @@ input {
 .categories__card-description {
     line-height: 1.7;
 }
-.categories__card:hover {
-    transform: scale(1.02);
-    box-shadow: 1px 1px 20px -3px rgba(0,0,0,.5);
-}
 .categories__card:hover .categories__icon-container {
     transform: rotate(360deg);
 }
@@ -373,16 +381,17 @@ input {
 }
 .pop__courses-card {
     background-color: var(--section-background-color);
-    box-shadow: 4px 4px 15px -3px var(--section-background-color2),
-               -4px -4px 15px -3px var(--section-background-color2);
+    box-shadow: 4px 4px 25px -2px rgba(33,38,86,1),
+               -4px -4px 25px -2px rgba(33,38,86,1);
     transform: scale(.99);
     transition: .2s;
 }
-.pop__courses-card:hover,
-.pop__courses-card:focus {
+.pop__courses-card:hover {
+    background: transparent;
+    border: 1px solid var(--nav-color);
     transform: scale(1);
-    box-shadow: 4px 4px 30px -3px rgba(20,20,50,1),
-               -4px -4px 30px -3px rgba(20,20,50,1);
+    box-shadow: 4px 4px 30px 4px rgba(0,0,0,.3),
+               -4px -4px 30px 4px rgba(0,0,0,.3);
 }
 .pop__courses-card-data {
     padding: 2rem;
@@ -398,11 +407,23 @@ input {
     width: 11.5rem;
     font-size: 1.2rem;
 }
+.pop__courses-card-btn:hover {
+    background: transparent;
+    outline: 3px solid var(--dark-orange);
+    outline-offset: -3px;
+    color: red;
+}
 
 /************* ACCORDION *************/
-
 .accordion__container {
-    row-gap: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+.accordion__sub-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
 }
 .accordion__content {
     background-color: var(--nav-color);
@@ -525,7 +546,7 @@ input {
 
 .footer {
     background-color: var(--section-background-color);
-    padding-bottom: 0;
+    padding-bottom: 0 !important;
 }
 .footer__container {
     row-gap: 3rem;
@@ -553,7 +574,7 @@ input {
 .footer__socials {
     display: flex;
     column-gap: 1.5rem;
-    justify-content: center;
+    align-items: center;
 }
 .footer__socials-icon {
     font-size: 2rem;
@@ -578,14 +599,8 @@ input {
     }
 }
 @media screen and (min-width: 340px) {
-    .categories__cards {
-        gap: 5vw;
-    }
-}
-@media screen and (min-width: 485px) {
-    .categories__cards {
-        grid-template-columns: repeat(3,1fr);
-        gap: 1rem;
+    .categories__cards-subcontainer {
+        gap: 4vw;
     }
 }
 @media screen and (min-width: 540px) {
@@ -593,18 +608,38 @@ input {
         grid-template-columns: repeat(2,1fr);
         gap: 1rem;
     }
+    .categories__cards-subcontainer {
+        grid-template-columns: repeat(3,1fr);
+        gap: 1rem;
+    }
+    .categories__card {
+        border-radius: 2rem;
+    }
 }
 @media screen and (min-width: 590px) {
     .categories__cards {
-        gap:3rem;
+        max-width: calc(590px - (var(--container-padding)) * 2);
+        margin: 0 auto;
+    }
+    .categories__cards-subcontainer {
+        gap: 2rem;
+    }
+}
+@media screen and (min-width: 600px) {
+    .accordion__container {
+        flex-direction: row;
+        column-gap: 1rem;
     }
 }
 /*********************** 768 ***********************/
 
 @media screen and (min-width: 768px) {
-    .container {
-        padding-right: 3rem;
-        padding-left: 3rem;
+    :root {
+        --container-padding: 3rem;
+    }
+    .section {
+        padding-top: 9rem;
+        padding-bottom: 4rem;
     }
     .nav__toggle-bars {
         display: none;
@@ -640,6 +675,10 @@ input {
     .nav__link:hover {
         color: #7fff7f;
     }
+    /*************** Global***************/
+    .section__title-container {
+        margin-bottom: 6rem;
+    }
     /****************** HOME ******************/
     .home {
         height: 80vh;
@@ -648,8 +687,10 @@ input {
     .home__container {
         flex-direction: row;
         align-items: center;
+        column-gap: 2rem;
     }
     .home__content {
+        max-width: 700px;
         margin-top: 0;
         text-align: left;
     }
@@ -659,6 +700,217 @@ input {
         display: initial;
     }
     .home__img {
-        width: 500px;
+        display: block;
+        margin-left: auto;
+    }
+    /**************** CATEGORIES ****************/
+    .categories {
+        padding-bottom: 7rem;
+        padding-top: 7rem;
+        height: 37rem;
+        margin-bottom: 10rem;
+    }
+    .categories__container {
+        grid-template-columns: .38fr .62fr;
+        column-gap: 4rem;
+        align-items: center;
+        height: 100%;
+    }
+    .categories__data {
+        max-width: 380px;
+    }
+    .categories__cards {
+        position: relative;
+        max-width: 100%;
+        margin: initial;
+        height: 100%;
+    }
+    .categories__cards-subcontainer {
+        width: fit-content;
+        margin: initial;
+        justify-items: initial;
+        position: absolute;
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 1rem;
+        top: 4rem;
+        bottom: -50%;
+        right: 0;
+    }
+    .categories__card {
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+    }
+    .categories__icon-container {
+        margin-bottom: 1.5rem;
+    }
+    .categories__card-title {
+        margin-bottom: .7rem;
+    }
+    .categories__card-description {
+        line-height: 1.6;
+    }
+    /********** POPULAR COURSES **********/
+    .pop__courses {
+        margin-top: 5rem;
+    }
+    .pop__courses-container {
+        grid-template-columns: repeat(3,1fr);
+    }
+    /******* ACCORDION ASKED QUESTIONS *******/
+    .accordion__container {
+        column-gap: 1.5rem;
+    }
+    .accordion__sub-container {
+        flex-direction: column;
+        row-gap: 1.5rem;
+    }
+    .accordion__label {
+        height: 7rem;
+        max-height: 9rem;
+        align-items: center;
+    }
+    /***************** TESTIMONIALS *****************/
+    .testimonials .section__title-container {
+        margin-bottom: 6rem;
+    }
+    /**************** FOOTER *****************/
+    .footer__container {
+        grid-template-columns: repeat(4,1fr);
+        column-gap: 3rem;
+        padding-bottom: 6rem;
+        text-align: left;
+    }
+    .footer__socials {
+        margin-top: 1rem;
+        column-gap: 2rem;
+    }
+}
+@media screen and (min-width: 779px) {
+    .categories__card {
+        padding: 1.5rem;
+    }
+}
+@media screen and (min-width: 810px) {
+    .categories__cards-subcontainer {
+        gap: 2rem;
+    }
+}
+@media screen and (min-width: 836px) {
+    .categories {
+        height: 40rem;
+    }
+    .categories__cards-subcontainer {
+        top: 5rem;
+    }
+}
+@media screen and (min-width: 905px) {
+    .categories__card {
+        padding: 2rem;
+    }
+}
+@media screen and (min-width: 980px) {
+    .categories__card {
+        border-radius: 2.5rem;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .section {
+        padding-top: 14rem;
+        padding-bottom: 5rem;
+    }
+    .section__title-container,
+    .testimonials .section__title-container{
+        margin-bottom: 7rem;
+    }
+    .section__title {
+        font-size: 2.5rem;
+    }
+    .description-small {
+        font-size: 1.2rem;
+        line-height: 1.65;
+    }
+    .btn {
+        width: 14rem;
+    }
+    .home__heading {
+        margin-bottom: 3rem;
+    }
+    .home__title {
+        font-size: 3.5rem;
+    }
+    .home__description-container {
+        margin-bottom: 2rem;
+    }
+    .categories {
+        margin-bottom: 12rem;
+    }
+    .categories__title {
+        font-size: 3.2rem;
+    }
+    .categories__card {
+        padding: 2.5rem;
+    }
+    .categories__card-description {
+        font-size: 1.05rem;
+    }
+    .pop__courses-container {
+        column-gap: 3rem;
+    }
+    .pop__courses-card-data {
+        padding: 3rem;
+    }
+    .pop__courses-card-title {
+        font-size: 1.7rem;
+        margin-bottom: 1.85rem;
+    }
+    .pop__courses-card-btn {
+        font-size: 1.4rem;
+        padding: 1.6rem 0;
+        margin-top: 2rem;
+    }
+    .accordion__container {
+        column-gap: 1.7rem;
+    }
+    .accordion__sub-container {
+        row-gap: 1.7rem;
+    }
+    .accordion__question {
+        font-size: 1.4rem;
+    }
+    .testimonial__giver-name {
+        font-size: 1.3rem;
+    }
+    .testimonial__text {
+        padding: 3.5rem 2.5rem;
+    }
+    .testimonial__text .description-small {
+        line-height: 1.7;
+    }
+    .testimonials .swiper-wrapper {
+        margin-bottom: 10rem;
+    }
+    .testimonials__container .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+    }
+    .footer__container {
+        column-gap: 6rem;
+    }
+    .footer__socials-icon {
+        font-size: 2rem;
+    }
+    .footer__title {
+        font-size: 1.6rem;
+        margin-bottom: 1.9rem;
+    }
+}
+@media screen and (min-width: 1270px) {
+    .container {
+        max-width: 1024px;
+        margin-right: auto;
+        margin-left: auto;
+        padding-right: 0;
+        padding-left: 0;
     }
 }

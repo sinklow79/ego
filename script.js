@@ -34,7 +34,7 @@ const swiper = new Swiper('.testimonials__container', {
         540: {
             slidesPerView: 2,
             spaceBetween: 10,
-        },
+        }
     }
 });
 
