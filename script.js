@@ -43,6 +43,7 @@ const swiper = new Swiper('.testimonials__container', {
 window.addEventListener("scroll", () => {
     let verticalScroll = window.scrollY;
     if (scrollY >= 30) {
+        console.log(header)
         header.classList.add("scroll");
     } else {
         header.classList.remove("scroll");
