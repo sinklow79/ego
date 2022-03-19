@@ -804,7 +804,7 @@ input {
         padding: 1.5rem;
     }
 }
-@media screen and (min-width: 810px) {
+@media screen and (min-width: 821px) {
     .categories__cards-subcontainer {
         gap: 2rem;
     }
