@@ -140,7 +140,7 @@ input {
 .header.scroll {
     background-color: var(--nav-color);
     height: var(--header-height);
-    box-shadow: var(--box-shadow3) rgba(0,0,0,.1);
+    box-shadow: 2px 2px 30px 1px rgba(0,0,0,.3);
     opacity: 0.98;
 }
 .nav {
@@ -178,6 +178,7 @@ input {
 .nav__item {
     background-color: var(--nav-color);
     width: 65vw;
+    max-width: 350px;
     text-align: center;
     box-shadow: inset 3px 3px 7px -3px rgba(0,0,0,.1),
                     0px 0px 0px 1px var(--nav-color);
@@ -260,11 +261,14 @@ input {
 .home__content,
 .home__img-container {
     display: flex;
+    height: 50%;
     flex-direction: column;
-    justify-content: end;
 }
 .home__content {
     text-align: center;
+    max-width: 490px;
+    margin-right: auto;
+    margin-left: auto;
     margin-top: 20vh;
 }
 .home__heading {
@@ -284,12 +288,19 @@ input {
     margin-right: auto;
     margin-left: auto;
 }
+.home__img-container {
+    justify-content: end;
+}
+.home__img {
+    max-height: 100%;
+}
 
 /************** CATEGORIES **************/
 
 .categories {
     background-color: var(--section-background-color);
     padding-bottom: 6rem;
+    padding-top: 8rem;
 }
 .categories__container {
     row-gap: 4rem;
@@ -335,7 +346,7 @@ input {
 }
 .categories__icon-container {
     display: inline-block;
-    padding: .9rem .5rem;
+    padding: .9rem .75rem;
     border-radius: 1.2rem;
     margin-bottom: 2.25rem;
     transition: .2s;
@@ -435,10 +446,12 @@ input {
 .accordion__label {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 2rem;
     cursor: pointer;
     column-gap: 2rem;
     transition: .2s;
+    height: 7rem;
 }
 .accordion__label:hover {
     background-color: rgb(75, 66, 174);
@@ -575,6 +588,7 @@ input {
     display: flex;
     column-gap: 1.5rem;
     align-items: center;
+    justify-content: center;
 }
 .footer__socials-icon {
     font-size: 2rem;
@@ -766,7 +780,6 @@ input {
         row-gap: 1.5rem;
     }
     .accordion__label {
-        height: 7rem;
         max-height: 9rem;
         align-items: center;
     }
