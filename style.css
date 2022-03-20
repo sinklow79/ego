@@ -404,6 +404,9 @@ input {
     box-shadow: 4px 4px 30px 4px rgba(0,0,0,.3),
                -4px -4px 30px 4px rgba(0,0,0,.3);
 }
+.pop__courses-img {
+    display: block;
+}
 .pop__courses-card-data {
     padding: 2rem;
 }
@@ -791,7 +794,7 @@ input {
     .footer__container {
         grid-template-columns: repeat(4,1fr);
         column-gap: 3rem;
-        padding-bottom: 6rem;
+        padding-bottom: 10rem;
         text-align: left;
     }
     .footer__socials {
@@ -837,7 +840,7 @@ input {
         margin-bottom: 7rem;
     }
     .section__title {
-        font-size: 2.5rem;
+        font-size: 2.7rem;
     }
     .description-small {
         font-size: 1.2rem;
@@ -909,6 +912,11 @@ input {
     }
     .footer__container {
         column-gap: 6rem;
+    }
+    .footer__socials {
+        margin-top: 1rem;
+        column-gap: 2rem;
+        justify-content: initial;
     }
     .footer__socials-icon {
         font-size: 2rem;
