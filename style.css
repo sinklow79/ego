@@ -45,7 +45,7 @@ html {
 }
 body {
     font-family: 'Montserrat', sans-serif;
-    background: url("/images/bg-texture.png");
+    background: url("images/bg-texture.png");
     background-color: var(--background-color);
     color: var(--text-white);
 }
